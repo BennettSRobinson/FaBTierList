@@ -9,11 +9,11 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/dashboard',
+        redirectTo: '/tierlist',
         pathMatch: 'full',
       },
       {
-        path: 'dashboard',
+        path: 'tierlist',
         loadChildren: () =>
           import('./pages/pages.routes').then((m) => m.PagesRoutes),
       },
@@ -31,19 +31,7 @@ export const routes: Routes = [
       },
     ],
   },
-  {
-    path: '',
-    component: BlankComponent,
-    children: [
-      {
-        path: 'authentication',
-        loadChildren: () =>
-          import('./pages/authentication/authentication.routes').then(
-            (m) => m.AuthenticationRoutes
-          ),
-      },
-    ],
-  },
+
   {
     path: '**',
     redirectTo: 'authentication/error',

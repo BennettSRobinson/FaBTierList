@@ -22,3 +22,24 @@
 // pages
 @use "pages/auth";
 @use "pages/dashboards";
+
+.tier-s {
+  background-color: #f54242 !important; /* Gold */
+  color: #000;
+}
+.tier-a {
+  background-color: #f57542 !important; /* Silver */
+  color: #000;
+}
+.tier-b {
+  background-color: #f5a142 !important; /* Bronze */
+  color: #000;
+}
+.tier-c {
+  background-color: #f5c542 !important; /* Light teal */
+  color: #000;
+}
+.tier-d {
+  background-color: #bcf542 !important; /* Light gray */
+  color: #000;
+}

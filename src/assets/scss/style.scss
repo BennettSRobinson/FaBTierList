@@ -25,21 +25,42 @@
 
 .tier-s {
   background-color: #f54242 !important; /* Gold */
+  width: 100px;
+  height: 100px;
   color: #000;
 }
 .tier-a {
   background-color: #f57542 !important; /* Silver */
+  width: 100px;
+  height: 100px;
   color: #000;
 }
 .tier-b {
   background-color: #f5a142 !important; /* Bronze */
   color: #000;
+  width: 100px;
+  height: 100px;
 }
 .tier-c {
   background-color: #f5c542 !important; /* Light teal */
   color: #000;
+  width: 100px;
+  height: 100px;
 }
 .tier-d {
   background-color: #bcf542 !important; /* Light gray */
   color: #000;
+  width: 100px;
+  height: 100px;
+}
+
+.hero-row{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-direction: row;
+}
+
+.custom-tooltip {
+  white-space: pre-line;
 }

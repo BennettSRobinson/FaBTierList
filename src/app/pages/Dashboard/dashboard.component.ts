@@ -7,6 +7,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { ActivatedRoute, Router } from "@angular/router";
+import { TimePeriodService } from "src/app/services/timePeriod.service";
+import { HeroService } from "src/app/services/hero.service";
+import { MatTooltipModule } from "@angular/material/tooltip";
 
 
 @Component({
@@ -17,7 +20,8 @@ import { ActivatedRoute, Router } from "@angular/router";
     MatTableModule,
     MatIconModule,
     MatMenuModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTooltipModule
   ],
   templateUrl: './dashboard.component.html',
   encapsulation: ViewEncapsulation.None
@@ -31,16 +35,14 @@ export class DashboardComponent {
   // Fixed tiers
   allTiers: string[] = ['S', 'A', 'B', 'C', 'D'];
 
-  // Actual tier data
-  tierData: { [key: string]: any[] } = {
-    S: [],
-    A: [],
-    B: [],
-    C: [],
-    D: [],
-  };
+
   dataSource1: any[] = [];
-  constructor (private activatedRoute: ActivatedRoute, private router: Router){}
+
+  constructor (
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private tpService: TimePeriodService,
+    private heroService: HeroService){}
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(params => {
@@ -53,14 +55,18 @@ export class DashboardComponent {
       } else {
         this.getIsCurrentMonth(currentMonth, currentYear, month, year)
       }
+      this.tpService.getTimePeriodId(+year, month).subscribe(timePeriodId => {
+        const id = timePeriodId.data['time_period'].id
+        this.heroService.getHeroTierList(+id).subscribe((heroes: any) => {
+          const heroList = heroes.data.heroes;
+          this.dataSource1 = this.allTiers.map(tier => ({
+            tier,
+            heroes: heroList[tier]
+          }));
+        })
 
+      });
     })
-    this.dataSource1 = this.allTiers.map(tier => {
-      return {
-        tier,
-        heroes: this.tierData[tier] || []
-      };
-    });
   }
   getTierClass(tier: string): string {
     return `tier-${tier.toLowerCase()}`; // e.g., tier-s, tier-a, etc.

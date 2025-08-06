@@ -7,3 +7,10 @@ export interface Hero {
     url: string
   }
 }
+
+export interface HeroInput {
+  name: string,
+  url: string,
+  win_rate: number,
+  total_talishar_plays: number,
+}

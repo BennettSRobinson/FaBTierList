@@ -29,7 +29,7 @@ export class HeroService {
       return this.http.post(this.apiEndPoint, { query, variables });
     }
 
-    createHero({year, month, name, win_rate, total_talishar_plays, url}: {year: number, month: string, name: string, win_rate: number, total_talishar_plays: number, url: string}){
+    createHero({year, month, name, win_rate, total_talishar_plays, url, password}: {year: number, month: string, name: string, win_rate: number, total_talishar_plays: number, url: string, password: string}){
       const timePeriodQuery = `
         query($month: String!, $year: Float!) {
           time_period(month: $month, year: $year) {
@@ -60,7 +60,8 @@ export class HeroService {
               win_rate: win_rate ?? 0,
               total_talishar_plays: total_talishar_plays ?? 0,
               id_time_period: timePeriodId ?? 0,
-              url: url ?? null // optional
+              url: url ?? null,
+              password
             }
           };
           return this.http.post(this.apiEndPoint, {
@@ -72,7 +73,7 @@ export class HeroService {
 
     };
 
-    editHero({id, win_rate, total_talishar_plays}: {id: number, win_rate: number, total_talishar_plays: number}) {
+    editHero({id, win_rate, total_talishar_plays, password}: {id: number, win_rate: number, total_talishar_plays: number, password: string}) {
       const query = `
         mutation($data: HeroUpdateInput!, $updateHeroId: Int!){
           updateHero(data: $data, id: $updateHeroId) {
@@ -89,6 +90,7 @@ export class HeroService {
       const variables = {
         updateHeroId: id,
         data: {
+          password,
           win_rate,
           total_talishar_plays
         }
@@ -96,7 +98,7 @@ export class HeroService {
       return this.http.post(this.apiEndPoint, {query, variables});
     }
 
-    deleteHero(id: number){
+    deleteHero(id: number, password: string){
       const query = `
         mutation($deleteHeroId: Int!){
           deleteHero(id: $deleteHeroId) {
@@ -105,7 +107,7 @@ export class HeroService {
         }
       `;
 
-      const variables = {deleteHeroId: id};
+      const variables = {deleteHeroId: id, password};
       return this.http.post(this.apiEndPoint, {query, variables})
     }
 }

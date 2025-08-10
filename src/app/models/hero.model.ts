@@ -9,6 +9,7 @@ export interface Hero {
 }
 
 export interface HeroInput {
+  password: string,
   name: string,
   url: string,
   win_rate: number,

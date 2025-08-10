@@ -92,6 +92,7 @@ export class DashboardComponent {
       if (result){
         if (result?.crud === 'create'){
           this.heroService.createHero({
+            password: result?.password,
             name: result?.name,
             url: result?.url,
             year: +this.year,
@@ -109,6 +110,7 @@ export class DashboardComponent {
         } else if(result?.crud === "edit"){
           this.heroService.editHero({
             id: result?.id,
+            password: result.password,
             win_rate: result?.win_rate,
             total_talishar_plays: result?.games_played
           }).subscribe({
@@ -120,7 +122,7 @@ export class DashboardComponent {
             }
           });
         } else {
-          this.heroService.deleteHero(result?.id).subscribe({
+          this.heroService.deleteHero(result?.id, result?.password).subscribe({
             next: (deleteHero) => {
               this.loadHeros()
             },

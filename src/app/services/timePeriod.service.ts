@@ -2,12 +2,13 @@ import { Injectable, signal } from '@angular/core';
 import { AppSettings, defaults } from '../config';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
     providedIn: 'root',
 })
 export class TimePeriodService {
-    private apiEndPoint = 'http://localhost:4000/graphql'
+    private apiEndPoint = environment.apiUrl
 
     constructor (private http: HttpClient){}
 

@@ -1,14 +1,14 @@
 import { Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { HeroInput } from '../models/hero.model';
 import { TimePeriodService } from './timePeriod.service';
 import { switchMap } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
     providedIn: 'root',
 })
 export class HeroService {
-    private apiEndPoint = 'http://localhost:4000/graphql'
+    private apiEndPoint = environment.apiUrl
 
     constructor(private http: HttpClient, private tp: TimePeriodService) {}
 

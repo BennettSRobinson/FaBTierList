@@ -143,8 +143,8 @@ export class DashboardComponent {
     if (this.isCurrentMonth && !this.displayedColumns1.includes("actions")){
       this.displayedColumns1.push("actions")
     }
-    // if (this.displayedColumns1.includes('actions') && !this.isCurrentMonth){
-    //   this.displayedColumns1 = this.displayedColumns1.filter(item => item !== 'actions')
-    // }
+    if (this.displayedColumns1.includes('actions') && !this.isCurrentMonth){
+      this.displayedColumns1 = this.displayedColumns1.filter(item => item !== 'actions')
+    }
   }
 }

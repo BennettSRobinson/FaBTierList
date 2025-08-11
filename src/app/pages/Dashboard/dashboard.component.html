@@ -24,7 +24,7 @@
                 <img *ngFor="let hero of element.heroes"
                   [src]="hero.hero_details.url"
                   [alt]="hero.hero_details.name"
-                  (click)="handleCRUDialog(hero, 'edit')"
+                  (click)="isCurrentMonth && handleCRUDialog(hero, 'edit')"
                   width="60"
                   class="rounded"
                   matTooltip="{{hero.hero_details.name}}&#13;

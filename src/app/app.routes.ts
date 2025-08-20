@@ -8,11 +8,11 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/tierlist',
+        redirectTo: '',
         pathMatch: 'full',
       },
       {
-        path: 'tierlist',
+        path: '',
         loadChildren: () =>
           import('./pages/pages.routes').then((m) => m.PagesRoutes),
       },

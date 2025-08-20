@@ -1,0 +1,47 @@
+<!-- landing-page.component.html -->
+<div class="landing-container">
+  <mat-card class="landing-card">
+    <!-- Top image -->
+    <img mat-card-image src="assets/images/fabLogo.jpeg" alt="Landing Image" height="300"/>
+
+    <!-- First section -->
+    <mat-card-content>
+      <h2 class="section-header">What is FaB Tier List</h2>
+      <mat-divider></mat-divider>
+      <p>
+        This application aggregates data from Talishar and presents monthly meta trends in a structured, tier-based format. Its purpose is exclusively educational and aimed at supporting the community.
+      </p>
+    </mat-card-content>
+
+    <!-- Second section -->
+    <mat-card-content>
+      <h2 class="section-header">Things to Know</h2>
+      <mat-divider></mat-divider>
+      <p>
+        As the data from Talishar is entered manually, this site will be updated biweekly with the latest information. If heroes do not appear in the tiers immediately, please allow up to a minute for the service to resume from idle.
+      </p>
+    </mat-card-content>
+
+    <!-- Third section -->
+    <mat-card-content>
+      <h2 class="section-header">Nerd stuff (How Tiers are calculated)</h2>
+      <mat-divider></mat-divider>
+      <p>
+        Each month, the algorithm aggregates the total number of games played across all heroes,
+        filtering out those with high win rates but insufficient play volume.
+        It then calculates the mean and standard deviation for eligible decks.
+        If a deck exceeds 1.5 standard deviations above the mean, an S tier is created.
+        Tiers are then assigned as follows: S – top 5&#37;, A – next 15&#37;, B and C – next 25&#37;, and D – all remaining decks.
+      </p>
+    </mat-card-content>
+    <mat-card-content>
+      <h2 class="section-header">The Future</h2>
+      <mat-divider></mat-divider>
+      <p>
+        A feature will be added to allow users to select a hero and view tiered matchups for the current month.
+        For example, selecting Slippy in January 2026 would display the decks that hero is favored or unfavored against, organized into tiers.
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>
+

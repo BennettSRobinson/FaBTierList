@@ -68,10 +68,10 @@ export class DashboardComponent {
     this.tpService.getTimePeriodId(+this.year, this.month).subscribe(timePeriodId => {
       const id = timePeriodId.data['time_period'].id
       this.heroService.getHeroTierList(+id).subscribe((heroes: any) => {
-        const heroList = heroes.data.heroes;
+        const heroList = heroes?.data?.heroes;
         this.dataSource1 = this.allTiers.map(tier => ({
           tier,
-          heroes: heroList[tier]
+          heroes: heroList[tier] ?? []
         }));
       })
 
